@@ -26,7 +26,7 @@ public class MainApp {
                 }
             };
             case 2 -> (sc) -> {
-                System.out.println("Enter the path to the encrypted file (resources/encrypt.txt):");
+                System.out.println("Enter the path to the encrypted file (resources/text.txt):");
                 String inputFilePath = sc.nextLine();
                 System.out.println("Enter the file path to decrypt the text (resources/decrypt.txt):");
                 String outputFilePath = sc.nextLine();

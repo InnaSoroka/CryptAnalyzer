@@ -8,9 +8,12 @@ public class Cipher {
             'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', '.', ',', '«', '»', '"', '/', ':', ';', '!', '?', '-', '_', ' ',
             '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
 
-    private Cipher() {
-        throw new IllegalStateException("Utility class");
+    private Cipher() { //конструктор, чтобы нельзя было создать экземпляр класса
+        throw new IllegalStateException("Utility class");//при попытке создания выбрасывается исключение
     }
+
+// метод encrypt принимает путь к входному файлу, путь к выходному файлу, ключ для шифрования
+// читает текст из входного файла, шифрует его с использованием метода encodeText,записывает зашифрованный текст в выходной файл
 
     public static void encrypt(String inputFilePath, String outputFilePath, int key) {
         String text = FileManager.readFile(inputFilePath);
@@ -19,7 +22,8 @@ public class Cipher {
             FileManager.writeFile(outputFilePath, encodedText);
         }
     }
-
+// у метода decrypt аналогичная работа как у метода encrypt
+// в качестве дешифровки используется отрицатьльное значение
     public static void decrypt(String inputFilePath, String outputFilePath, int key) {
         String text = FileManager.readFile(inputFilePath);
         if (text != null) {
@@ -28,6 +32,9 @@ public class Cipher {
         }
     }
 
+// метод для принятия текста, ключа, трансформирует текст в массив символов шифрует его
+// сдвигая каждый символ на значение ключа в пределах алфавита
+// если ключ отрицательный, выполняется дешифрование
     private static String encodeText(String text, int key) {
         char[] charText = text.toCharArray();
         for (int i = 0; i < charText.length; i++) {
@@ -41,6 +48,7 @@ public class Cipher {
         return new String(charText);
     }
 
+// метод для возврата массива символов
     public static char[] getAlphabet() {
         return ALPHABET;
     }

@@ -1,6 +1,5 @@
 package com.sorokina.cryptanalyzer;
 import java.util.Scanner;
-import java.util.function.Consumer;
 
 public class MainApp {
     public static void main(String[] args) {
@@ -27,30 +26,30 @@ public class MainApp {
     }
 
     private static void encryptText(Scanner sc) { // метод для шифрования текста
-        System.out.println("Введите путь к файлу (resources/text.txt):"); // запрос пути к файлу для шифрования
+        System.out.println("Enter the file path (resources/text.txt):"); // запрос пути к файлу для шифрования
         String inputFilePath = sc.nextLine(); // считать путь к файлу
-        System.out.println("Введите путь для сохранения зашифрованного текста (resources/encrypt.txt):"); // запрос пути для сохранения зашифрованного текста
+        System.out.println("Enter the path to save the encrypted text (resources/encrypt.txt):"); // запрос пути для сохранения зашифрованного текста
         String outputFilePath = sc.nextLine(); // считать путь для сохранения зашифрованного текста
-        System.out.println("Введите ключ сдвига:"); // запросить ключ сдвига для шифрования
+        System.out.println("Enter the shift key:"); // запросить ключ сдвига для шифрования
         int key = sc.nextInt(); // считывание ключа сдвига
         if (Validator.validateFileExists(inputFilePath) && Validator.validateKey(key)) { // проверка существования файла и корректности ключа
             Cipher.encrypt(inputFilePath, outputFilePath, key); // если проверки пройдены, выполнить шифрование
         } else { // если проверки не пройдены
-            System.out.println("Неверный путь к файлу или ключ!"); // вывести сбщ об ошибке
+            System.out.println("The file path or key is incorrect!"); // вывести сбщ об ошибке
         }
     }
 
     private static void decryptText(Scanner sc) { // метод для дешифрования текста
-        System.out.println("Введите путь к зашифрованному файлу (resources/text.txt):"); // запрос пути к зашифрованному файлу
+        System.out.println("Enter the path to the encrypted file (resources/text.txt):"); // запрос пути к зашифрованному файлу
         String inputFilePath = sc.nextLine(); // считать путь к зашифрованному файлу
-        System.out.println("Введите путь для сохранения расшифрованного текста (resources/decrypt.txt):"); // запрос пути для сохранения расшифрованного текста
+        System.out.println("Enter the path to save the decrypted text (resources/decrypt.txt):"); // запрос пути для сохранения расшифрованного текста
         String outputFilePath = sc.nextLine(); // считать путь для сохранения расшифрованного текста
-        System.out.println("Введите ключ сдвига:"); // запрос ключа сдвига для дешифрования
+        System.out.println("Enter the shift key:"); // запрос ключа сдвига для дешифрования
         int key = sc.nextInt(); // считывание ключ сдвига
         if (Validator.validateFileExists(inputFilePath) && Validator.validateKey(key)) { // проверка существования файла и корректности ключа
             Cipher.decrypt(inputFilePath, outputFilePath, key); // если проверки пройдены, выполнить дешифрование
         } else { // если проверки не пройдены
-            System.out.println("Неверный путь к файлу или ключ!"); // вывести сбщ об ошибке
+            System.out.println("The file path or key is incorrect!"); // вывести сбщ об ошибке
         }
     }
 }

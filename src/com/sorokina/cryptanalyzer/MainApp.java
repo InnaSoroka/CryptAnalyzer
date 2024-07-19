@@ -1,6 +1,5 @@
 package com.sorokina.cryptanalyzer;
 import java.util.Scanner;
-import java.util.function.Consumer;
 
 public class MainApp {
     public static void main(String[] args) {
